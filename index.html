@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curtains</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body,
+      body > div {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+
+      [class*="curtain"] {
+        position: relative;
+        height: 650px;
+        width: 1400px;
+      }
+
+      [class*="curtain"]::after,
+      [class*="curtain"]::before {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        transition-duration: 1s;
+        z-index: 4;
+      }
+
+      .curtain-1::after,
+      .curtain-1::before {
+        height: 50%;
+        width: 100%;
+      }
+
+      .curtain-0::after {
+        right: 0;
+        transform-origin: right;
+      }
+
+      .curtain-0::before {
+        left: 0;
+        transform-origin: left;
+      }
+
+      .curtain-0.curtain-open:after,
+      .curtain-0.curtain-open:before {
+        transform: scaleX(0);
+      }
+
+      .curtain-1::after {
+        bottom: 0;
+        transform-origin: bottom;
+      }
+
+      .curtain-1::before {
+        top: 0;
+        transform-origin: top;
+      }
+
+      .curtain-1.curtain-open:after,
+      .curtain-1.curtain-open:before {
+        animation: openCurtain 2s forwards; /* Apply the animation on page load */
+      }
+
+      /* Add the keyframe animation for curtain opening */
+      @keyframes openCurtain {
+        0% {
+          transform: scaleY(1);
+        }
+        100% {
+          transform: scaleY(0);
+        }
+      }
+
+      /* Add the class that keeps the curtain open */
+      .curtain-1.curtain-open.keep-open::after,
+      .curtain-1.curtain-open.keep-open::before {
+        transform: scaleY(0);
+        animation: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="curtain-1 curtain-open keep-open">
+       <section id="hero" class="inside">
+        <div class="heroContainer">
+          
+          <nav class="navbar sticky-top" id="navbar">
+            <div class="nav-container">
+              <a href="https://aartas.com/"
+                ><img src="./img/logo_white.png" alt="" class="logo-img"
+              /></a>
+              <ul id="menu" class="menu">
+                <li class="menu-item"><a href="#">About Us</a></li>
+                <li class="menu-item"><a href="#">Specialities</a></li>
+                <li class="menu-item"><a href="#">Aartas App</a></li>
+                <li class="menu-item"><a href="#">Aartas Space</a></li>
+                <li class="menu-item"><a href="#">News</a></li>
+              </ul>
+              <div class="hamberger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
+          </nav>
+  
+          <div class="hero-text">
+            <h1>Aartas</h1>
+            <p><b>We bring you closer to care</b></p>
+          </div>
+          <div class="slideshow-container" id="slideshow-container"></div>
+          <div class="overlay"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      // Add the curtain-open class on page load to trigger the animation
+      window.addEventListener("DOMContentLoaded", (event) => {
+        const curtain = document.querySelector(".curtain-1");
+        curtain.classList.remove("keep-open");
+      });
+    </script>
+  </body>
+</html>
