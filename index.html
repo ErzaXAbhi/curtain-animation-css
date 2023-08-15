@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="./img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png" />
     <title>Aartas | About Us</title>
     <link rel="stylesheet" href="style.css" />
     <style>
@@ -90,9 +90,8 @@
   </head>
   <body>
     <div class="curtain-1 curtain-open keep-open">
-       <section id="hero" class="inside">
+      <section id="hero" class="inside">
         <div class="heroContainer">
-          
           <nav class="navbar sticky-top" id="navbar">
             <div class="nav-container">
               <a href="https://aartas.com/"
@@ -112,17 +111,41 @@
               </div>
             </div>
           </nav>
-  
+
           <div class="hero-text">
             <h1>Aartas</h1>
             <p><b>We bring you closer to care</b></p>
           </div>
           <div class="slideshow-container" id="slideshow-container"></div>
           <div class="overlay"></div>
-          </div>
         </div>
       </section>
     </div>
+
+    <section class="about-us" id="aboutus">
+      <div class="about-us-text">
+        <div class="main-heading">
+          <h1>What is Aartas</h1>
+          <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+            omnis odit vero quod reprehenderit repudiandae assumenda laboriosam,
+            quisquam cum deleniti.
+          </p>
+        </div>
+      </div>
+      <div class="main-scroll">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="sidebar">
+        <div class="content-wrapper">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </section>
     <script src="script.js"></script>
     <script>
       // Add the curtain-open class on page load to trigger the animation
@@ -130,6 +153,31 @@
         const curtain = document.querySelector(".curtain-1");
         curtain.classList.remove("keep-open");
       });
+
+      /////////////////////////////////////////////
+      //sidebar js code
+
+      let sidebar = document.getElementsByClassName("sidebar")[0];
+      let sidebar_content =
+        document.getElementsByClassName("content-wrapper")[0];
+
+      window.onscroll = () => {
+        let scrollTop = window.scrollY;
+        let viewportHeight = window.innerHeight;
+        let sidebarTop =
+          sidebar.getBoundingClientRect().top + window.pageYOffset;
+        let contentHeight = sidebar_content.getBoundingClientRect().height;
+
+        if (scrollTop >= contentHeight - viewportHeight + sidebarTop) {
+          sidebar_content.style.transform = `translateY(-${
+            contentHeight - viewportHeight + sidebarTop
+          }px)`;
+          sidebar_content.style.position = "fixed";
+        } else {
+          sidebar_content.style.transform = "";
+          sidebar_content.style.position = "";
+        }
+      };
     </script>
   </body>
 </html>

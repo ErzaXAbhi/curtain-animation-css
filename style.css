@@ -17,6 +17,11 @@ html {
   scroll-padding-top: 60px;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 /* .hero,
 .scroll-container,
 .about_doctor,
@@ -109,6 +114,7 @@ li a {
   transition: all 2s ease-in-out;
   max-width: 100%;
   overflow: hidden;
+  animation: fade 12s infinite;
 }
 
 .mySlides {
@@ -147,4 +153,61 @@ li a {
   margin-top: -2rem;
 }
 
-/* slide up and down animation */
+/* About Us */
+
+.about-us {
+  margin: 4rem;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+}
+
+.main-heading {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+.main-heading h1 {
+  font-size: 11rem;
+  line-height: 1;
+}
+
+.main-heading h5 {
+  margin-top: 1rem;
+  font-size: 4rem;
+  line-height: 0.9;
+}
+
+.main-heading p {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.main-scroll {
+  width: 30%;
+  margin: 20px;
+}
+.sidebar {
+  width: 20%;
+  margin: 20px;
+}
+.main-scroll div {
+  width: 200px;
+  height: 250px;
+  background: linear-gradient(45deg, #292928 0%, #313030 60%);
+  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-left: 0rem;
+}
+.sidebar .content-wrapper div {
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #292928 0%, #313030 60%);
+  margin-bottom: 20px;
+}
